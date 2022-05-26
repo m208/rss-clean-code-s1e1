@@ -8,17 +8,17 @@
 
 // Event handling, user interaction is what starts the code execution.
 
-var taskInput=document.getElementById("task-new");//Add a new task.
+var taskInput=document.querySelector(".task-add .task-input");//Add a new task.
 var addButton=document.querySelector(".bttn-add");
-var incompleteTaskHolder=document.getElementById("uncompleted");//ul of #incompleteTasks
-var completedTasksHolder=document.getElementById("completed");//completed-tasks
+var incompleteTaskHolder=document.querySelector(".uncompleted");//incompleteTasks
+var completedTasksHolder=document.querySelector(".completed");//completed-tasks
 
 
 //New task list item
 var createNewTaskElement=function(taskString){
 
   var listItem=document.createElement("li");
-  listItem.classList.add('task-wrapper');
+  listItem.className="task-wrapper";
 
   //input (checkbox)
   var checkBox=document.createElement("input");//checkbx
@@ -34,18 +34,20 @@ var createNewTaskElement=function(taskString){
   var deleteButtonImg=document.createElement("img");//delete button image
 
   label.innerText=taskString;
-  label.className='task';
+  label.className="task task-label";
 
   //Each elements, needs appending
   checkBox.type="checkbox";
+  checkBox.className="checkbox";
   editInput.type="text";
-  editInput.className="task";
+  editInput.className="task task-input";
 
   editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-  editButton.className="bttn-edit";
+  editButton.className="button bttn-edit";
 
-  deleteButton.className="bttn-del";
-  deleteButtonImg.src='./remove.svg';
+  deleteButton.className="button bttn-del";
+  deleteButtonImg.src="./remove.svg";
+  deleteButtonImg.className="pic";
   deleteButton.appendChild(deleteButtonImg);
 
 
@@ -83,7 +85,7 @@ var editTask=function(){
 
   var listItem=this.parentNode;
 
-  var editInput=listItem.querySelector('input[type=text]');
+  var editInput=listItem.querySelector("input[type=text]");
   var label=listItem.querySelector("label");
   var editBtn=listItem.querySelector(".bttn-edit");
   var containsClass=listItem.classList.contains("task-edit");
